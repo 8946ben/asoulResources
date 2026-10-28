@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>枝江梗百科 · A-SOUL 素材站</title>
+<link rel="stylesheet" href="assets/css/site.css">
+<script>try{if(localStorage.getItem('asoul.theme')==='light')document.documentElement.setAttribute('data-theme','light')}catch(e){}</script>
+</head>
+<body>
+
+<header class="nav" data-nav></header>
+
+<main class="wrap">
+  <div class="section-head" style="padding-top:34px">
+    <h2>枝江梗百科</h2>
+    <p>A-SOUL 历史上的名梗，按时间线排列。条目由粉丝整理，标注「待考证」的出处细节欢迎修正。</p>
+  </div>
+
+  <div class="toolbar">
+    <div class="toolbar-row">
+      <div class="search-box">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
+          <circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/>
+        </svg>
+        <input type="text" id="q" placeholder="搜索梗名 / 别名 / 出处，如「勇敢牛牛」">
+      </div>
+    </div>
+    <div class="filters" id="memberFilters"></div>
+  </div>
+
+  <div class="result-line">
+    <div>共 <b id="cnt">0</b> 条梗</div>
+    <div class="text-dim" style="font-size:12px">时间线按梗的流行起点排序，部分日期为约值</div>
+  </div>
+
+  <div class="timeline" id="timeline"></div>
+  <div id="emptyHost"></div>
+</main>
+
+<footer class="footer">
+  <div>本页为粉丝自发整理的梗百科，与 A-SOUL 制作委员会、乐华娱乐、枝江娱乐均无隶属关系。</div>
+  <div class="mt-8"><a href="about.html">来源与版权声明</a> · <a href="gallery.html">素材库</a></div>
+</footer>
+
+<script src="assets/js/data.js?v=2"></script>
+<script src="assets/js/memes-data.js"></script>
+<script src="assets/js/core.js?v=2"></script>
+<script src="assets/js/memes.js"></script>
+</body>
+</html>

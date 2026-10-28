@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>关于与版权 · A-SOUL 素材站</title>
+<link rel="stylesheet" href="assets/css/site.css">
+<script>try{if(localStorage.getItem('asoul.theme')==='light')document.documentElement.setAttribute('data-theme','light')}catch(e){}</script>
+<style>
+  .about p { color: var(--fg-dim); line-height: 1.9; font-size: 13.8px; }
+  .about h3 { font-size: 15.5px; margin: 26px 0 10px; }
+  .about h3:first-child { margin-top: 0; }
+  .about ul { padding-left: 20px; color: var(--fg-dim); line-height: 1.95; font-size: 13.2px; }
+  .about code {
+    font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 12px;
+    background: rgba(255,255,255,.07); padding: 2px 6px; border-radius: 5px;
+    border: 1px solid var(--line);
+  }
+  .about table { width: 100%; border-collapse: collapse; margin: 12px 0 18px; font-size: 13px; }
+  .about th, .about td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--line); }
+  .about th { color: var(--fg-mute); font-weight: 600; font-size: 12px; letter-spacing: .4px; }
+  .about td { color: var(--fg-dim); }
+  .about .k { color: var(--fg); font-weight: 600; }
+</style>
+</head>
+<body>
+
+<header class="nav" data-nav></header>
+
+<main class="wrap about">
+  <div class="section-head" style="padding-top:34px">
+    <h2>关于这个站</h2>
+    <p>收录范围、数据来源、版权说明与自行扩展的方法。</p>
+  </div>
+
+  <div class="note info">
+    <b>一句话说明：</b>这是一个粉丝自发整理的 A-SOUL 素材<b>索引站</b>，只收录现役成员相关内容，
+    内置素材全部来自公开渠道并标注来源，不提供任何受版权保护音源的分发。
+  </div>
+
+  <div class="section">
+    <h3>收录范围：为什么只有 5 个人</h3>
+    <p>
+      你的要求是「收集 A-SOUL 相关素材，排除已退团的成员」。按此口径，本站收录以下 5 位现役成员：
+    </p>
+    <table>
+      <thead>
+        <tr><th>成员</th><th>分组</th><th>状态</th><th>代表色</th><th>B 站空间</th></tr>
+      </thead>
+      <tbody id="scopeTable"></tbody>
+    </table>
+    <p>
+      以下成员<b>不在收录范围内</b>，相关素材在抓取阶段已整体过滤，包括文件名含
+      <code>ava</code> / <code>carol</code> 的资源目录与联名单图：
+    </p>
+    <table>
+      <thead><tr><th>成员</th><th>情况</th><th>时间</th></tr></thead>
+      <tbody>
+        <tr><td class="k">向晚 Ava</td><td>官方宣布无限期停止活动</td><td>2024-04</td></tr>
+        <tr><td class="k">珈乐 Carol</td><td>直播休眠，并提前解约</td><td>2022-05</td></tr>
+        <tr><td class="k">来芙 Laffey</td><td>枝江娱乐「银河商店」三期成员，非 A-SOUL 成员，且已休眠</td><td>2025-04</td></tr>
+      </tbody>
+    </table>
+    <div class="note">
+      需要注意：萌娘百科与百度百科的条目里，A-SOUL 的「现役成员」有时只写贝拉、嘉然、乃琳三人，
+      心宜与思诺被归到「枝江娱乐 · 闪耀舞台」名下。两人在 2023 年出道时曾以「A-SOUL 二期生」名义活动，
+      本站按你的选择将她们纳入。如果你想改成只保留一期三人，直接编辑
+      <code>data/members.json</code> 与素材的 <code>member</code> 字段即可。
+    </div>
+  </div>
+
+  <div class="section">
+    <h3>数据来源</h3>
+    <table>
+      <thead><tr><th>素材类型</th><th>来源</th><th>说明</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="k">表情包（205 项）</td>
+          <td><a href="https://github.com/stormyyd/asoul-sticker" target="_blank" rel="noopener">stormyyd/asoul-sticker ↗</a></td>
+          <td>GitHub 公开粉丝仓库，收录 B 站装扮表情、官方动态表情、舰长表情与联名表情。仓库代码部分为 UNLICENSE，<code>asset</code> 目录素材版权归原始创作者所有。已过滤向晚 / 珈乐相关文件。</td>
+        </tr>
+        <tr>
+          <td class="k">立绘与图片</td>
+          <td><a href="https://mzh.moegirl.org.cn/A-SOUL" target="_blank" rel="noopener">萌娘百科 ↗</a></td>
+          <td>官方公式立绘、专辑封面与团体标识等。图片托管于萌站 CDN，本站仅做本地化缓存便于浏览。</td>
+        </tr>
+        <tr>
+          <td class="k">服设三视图（86 项）</td>
+          <td><a href="https://github.com/urlyy/asoul_gallery" target="_blank" rel="noopener">urlyy/asoul_gallery ↗</a></td>
+          <td>五位成员各套服装设定的三视图集（背 / 正 / 侧），本站压至长边 1800px 入库，收录在「立绘 / 形象」系列。</td>
+        </tr>
+        <tr>
+          <td class="k">音乐曲目（23 条）</td>
+          <td>公开资料整理</td>
+          <td>仅整理曲名、发行时间、成员归属与备注，<b>不包含任何音频文件</b>，收听入口跳转至 B 站与网易云音乐搜索。</td>
+        </tr>
+        <tr>
+          <td class="k">成员资料</td>
+          <td>萌娘百科 / 百度百科 / B 站官方专栏</td>
+          <td>生日、代表色、粉丝名、B 站 UID、二创 Tag、语录与服饰体系等公开信息（详见下方「相关资源导航」）。</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section" id="links">
+    <h3>相关资源导航</h3>
+    <p>官方渠道、百科档案与社区开源仓库的传送门，二创查资料、找素材时用得上。</p>
+
+    <p style="font-weight:600;margin:16px 0 4px">官方账号（B 站）</p>
+    <table>
+      <thead><tr><th>账号</th><th>说明</th></tr></thead>
+      <tbody>
+        <tr><td class="k"><a href="https://space.bilibili.com/703007996" target="_blank" rel="noopener">A-SOUL_Official ↗</a></td><td>官方动态、新衣发布与直播公告，人设图 / 服饰设定图的一手来源</td></tr>
+        <tr><td class="k"><a href="https://space.bilibili.com/672342685" target="_blank" rel="noopener">乃琳Queen ↗</a></td><td>乃琳个人账号，动态含大量日常高清图</td></tr>
+        <tr><td class="k"><a href="https://space.bilibili.com/672353429" target="_blank" rel="noopener">贝拉kira ↗</a></td><td>贝拉个人账号</td></tr>
+        <tr><td class="k"><a href="https://space.bilibili.com/672328094" target="_blank" rel="noopener">嘉然今天吃什么 ↗</a></td><td>嘉然个人账号</td></tr>
+      </tbody>
+    </table>
+
+    <p style="font-weight:600;margin:16px 0 4px">百科 / 档案</p>
+    <table>
+      <thead><tr><th>页面</th><th>说明</th></tr></thead>
+      <tbody>
+        <tr><td class="k"><a href="https://www.bilibili.com/read/cv9289290" target="_blank" rel="noopener">B 站专栏《A-SOUL成员小档案》 ↗</a></td><td>官方成员小档案 1.0</td></tr>
+        <tr><td class="k"><a href="https://zh.moegirl.org.cn/A-SOUL" target="_blank" rel="noopener">萌娘百科：A-SOUL ↗</a></td><td>团体条目（镜像可用 moegirl.icu/A-SOUL）</td></tr>
+        <tr><td class="k"><a href="https://moegirl.icu/%E4%B9%83%E7%90%B3" target="_blank" rel="noopener">萌娘百科：乃琳 ↗</a></td><td>含完整「形象」节：服装体系一览</td></tr>
+        <tr><td class="k"><a href="https://moegirl.icu/%E8%B4%9D%E6%8B%89(%E8%99%9A%E6%8B%9FUP%E4%B8%BB)" target="_blank" rel="noopener">萌娘百科：贝拉 ↗</a></td><td>常服 / 团服立绘与设定</td></tr>
+        <tr><td class="k"><a href="https://moegirl.icu/%E5%98%89%E7%84%B6" target="_blank" rel="noopener">萌娘百科：嘉然 ↗</a></td><td>常服 / 团服立绘与设定</td></tr>
+        <tr><td class="k"><a href="https://www.bilibili.com/opus/621859097793693557" target="_blank" rel="noopener">A-SOUL 表情包总览（B 站） ↗</a></td><td>社区整理的全成员表情包传送门</td></tr>
+      </tbody>
+    </table>
+
+    <p style="font-weight:600;margin:16px 0 4px">GitHub 资源仓库 <span style="font-weight:400;color:var(--fg-mute)">（括注为最后维护时间，即 GitHub 最近一次 push，2026-10 查询）</span></p>
+    <table>
+      <thead><tr><th>仓库</th><th>说明</th></tr></thead>
+      <tbody>
+        <tr><td class="k"><a href="https://github.com/stormyyd/asoul-sticker" target="_blank" rel="noopener">stormyyd/asoul-sticker ⭐ ↗</a></td><td>本站表情包的来源仓库，按角色分目录的 PNG 表情包，Unlicense（最后维护 2022-05）</td></tr>
+        <tr><td class="k"><a href="https://github.com/urlyy/asoul_gallery" target="_blank" rel="noopener">urlyy/asoul_gallery ⭐ ↗</a></td><td>五位成员各套服设的三视图集，本站「立绘 / 形象」系列来源（最后维护 2026-10）</td></tr>
+        <tr><td class="k"><a href="https://github.com/yetao0/Asoul-Stickers" target="_blank" rel="noopener">yetao0/Asoul-Stickers ↗</a></td><td>转发自官方账号的贴纸合集（最后维护 2022-06）</td></tr>
+        <tr><td class="k"><a href="https://github.com/A-Soul-Database/A-Soul-Database" target="_blank" rel="noopener">A-Soul-Database/A-Soul-Database ↗</a></td><td>第三方直播数据 / 资料库（JSON 数据为主）（最后维护 2022-04）</td></tr>
+        <tr><td class="k"><a href="https://github.com/djj45/asoul" target="_blank" rel="noopener">djj45/asoul ↗</a></td><td>A-SOUL 录播、打轴、压制、投稿方法，二产出片入门必读（最后维护 2024-03）</td></tr>
+        <tr><td class="k"><a href="https://github.com/AsoulFansArt/AsoulFansArt-Frontend" target="_blank" rel="noopener">AsoulFansArt/AsoulFansArt-Frontend ↗</a></td><td>粉丝二创画站前端，同人图集合（最后维护 2022-08）</td></tr>
+        <tr><td class="k"><a href="https://github.com/sakifore/ASoul_meme_explanation" target="_blank" rel="noopener">sakifore/ASoul_meme_explanation ↗</a></td><td>枝江梗百科，评论区梗解释合集（最后维护 2021-06）</td></tr>
+        <tr><td class="k"><a href="https://github.com/asoul-sig/asoul-video" target="_blank" rel="noopener">asoul-sig/asoul-video ↗</a></td><td>asoul.video 录播站前后端源码（最后维护 2023-02）</td></tr>
+        <tr><td class="k"><a href="https://github.com/ZiuChen/A-Soul-Browser-Pet" target="_blank" rel="noopener">ZiuChen/A-Soul-Browser-Pet ↗</a></td><td>浏览器桌宠，内置五位成员 Q 版立绘素材（最后维护 2023-07）</td></tr>
+        <tr><td class="k"><a href="https://github.com/Evelynall/ASoul-Little-Bun" target="_blank" rel="noopener">Evelynall/ASoul-Little-Bun ↗</a></td><td>枝江小馒头桌宠，含角色图片素材（最后维护 2026-06）</td></tr>
+        <tr><td class="k"><a href="https://github.com/ASoulCnki/ASoulCnki" target="_blank" rel="noopener">ASoulCnki/ASoulCnki ↗</a></td><td>枝网小作文查重系统·爬虫（最后维护 2022-05）</td></tr>
+        <tr><td class="k"><a href="https://github.com/topics/a-soul" target="_blank" rel="noopener">GitHub Topic: a-soul ↗</a></td><td>更多社区开源项目</td></tr>
+      </tbody>
+    </table>
+
+    <p style="font-weight:600;margin:16px 0 4px">GitHub 社区工具 / 生态项目</p>
+    <table>
+      <thead><tr><th>仓库</th><th>说明</th></tr></thead>
+      <tbody>
+        <tr><td class="k"><a href="https://github.com/Caiguu/asoul-timeline" target="_blank" rel="noopener">Caiguu/asoul-timeline ↗</a></td><td>粉丝向动态聚合与直播日历站，AI 识别每周日程表，支持 ICS 订阅（最后维护 2026-10）</td></tr>
+        <tr><td class="k"><a href="https://github.com/nakixii/Magisk_AsoulOpt" target="_blank" rel="noopener">nakixii/Magisk_AsoulOpt ↗</a></td><td>社区最热门项目（2.7k star）：安卓性能优化模块（最后维护 2026-09）</td></tr>
+        <tr><td class="k"><a href="https://github.com/Evelynall/ASoul-Calendar" target="_blank" rel="noopener">Evelynall/ASoul-Calendar ↗</a></td><td>点格子式日程表，用于补枝江录播（最后维护 2026-06）</td></tr>
+        <tr><td class="k"><a href="https://github.com/dayanggo/ASoulAutoClip" target="_blank" rel="noopener">dayanggo/ASoulAutoClip ↗</a></td><td>直播自动切片工具（最后维护 2026-01）</td></tr>
+        <tr><td class="k"><a href="https://github.com/asouldevgroup/AsoulGuard" target="_blank" rel="noopener">asouldevgroup/AsoulGuard ↗</a></td><td>「A盾」评论区守护工具（最后维护 2026-03）</td></tr>
+        <tr><td class="k"><a href="https://github.com/asoul-sig/acao" target="_blank" rel="noopener">asoul-sig/acao ↗</a></td><td>阿草，asoul.video 的数据爬取工具人（最后维护 2023-07）</td></tr>
+        <tr><td class="k"><a href="https://github.com/sudoskys/Tool-Asoul-Music" target="_blank" rel="noopener">sudoskys/Tool-Asoul-Music ↗</a></td><td>B站收藏夹 RSS 提取音频，自动 FLAC 元数据（最后维护 2023-02）</td></tr>
+        <tr><td class="k"><a href="https://github.com/TheSecondAkari/vscode-live2d" target="_blank" rel="noopener">TheSecondAkari/vscode-live2d ↗</a></td><td>VSCode Live2D 插件，默认角色嘉然（最后维护 2024-11）</td></tr>
+        <tr><td class="k"><a href="https://github.com/EDGAhab/AsoulContest" target="_blank" rel="noopener">EDGAhab/AsoulContest ↗</a></td><td>A-SOUL 桌宠，掘金 2022 编程挑战赛第二名（最后维护 2022-06）</td></tr>
+        <tr><td class="k"><a href="https://github.com/skykeyjoker/A-SOUL-Notification" target="_blank" rel="noopener">skykeyjoker/A-SOUL-Notification ↗</a></td><td>成员动态 / 直播提醒插件，支持 B站与抖音（最后维护 2022-05）</td></tr>
+        <tr><td class="k"><a href="https://github.com/re-ovo/ASoulZhiWang" target="_blank" rel="noopener">re-ovo/ASoulZhiWang ↗</a></td><td>评论区小作文助手（最后维护 2021-10）</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section">
+    <h3>版权与免责声明</h3>
+    <ul>
+      <li>本站为<b>非官方粉丝项目</b>，与 A-SOUL 制作委员会、乐华娱乐、枝江娱乐及任何官方机构<b>没有隶属或合作关系</b>。</li>
+      <li>站内所有角色形象、美术素材、音乐作品的版权，归 A-SOUL 制作委员会及各原始创作者所有。</li>
+      <li>素材仅用于<b>个人学习、交流与二次创作参考</b>，请勿用于商业用途，也不要在未获授权的情况下二次分发。</li>
+      <li>本站不存储、不分发任何音乐音源文件；音频专区仅提供曲目索引与官方平台跳转。</li>
+      <li>如果你认为站内某份素材侵犯了你的权益，请通过下方联系方式告知，会第一时间移除。</li>
+      <li>请通过官方渠道支持她们：<a href="https://space.bilibili.com/703007996" target="_blank" rel="noopener">B 站 @A-SOUL_Official ↗</a></li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h3>怎么自己往里面加素材</h3>
+    <p>站点是纯静态的，有三种由易到难的扩展方式：</p>
+    <table>
+      <thead><tr><th>方式</th><th>怎么做</th><th>适用场景</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="k">① 导入后台<br><span class="text-dim">最简单</span></td>
+          <td>打开 <a href="import.html">导入后台</a>，把文件拖进去 → 核对成员与类型 → 保存到本地素材库。刷新后仍在，也会出现在素材库页面。</td>
+          <td>自己收藏 / 临时整理</td>
+        </tr>
+        <tr>
+          <td class="k">② 导出固化</td>
+          <td>在导入后台点「导出 data.js」，用它覆盖 <code>assets/js/data.js?v=2</code>，同时把素材文件放进 <code>assets/images/</code> 或 <code>assets/stickers/</code>，并修正 JSON 里的 <code>file</code> 路径。</td>
+          <td>想把内容固化进站点、分享给别人</td>
+        </tr>
+        <tr>
+          <td class="k">③ 直接改数据</td>
+          <td>编辑 <code>data/assets.json</code>（或 <code>assets/js/data.js?v=2</code>），按同样的字段结构追加条目即可。</td>
+          <td>批量导入、脚本化维护</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>素材条目的字段结构</h3>
+    <p>每条素材就是一个对象，字段含义如下：</p>
+    <table>
+      <thead><tr><th>字段</th><th>含义</th></tr></thead>
+      <tbody>
+        <tr><td class="k">id</td><td>唯一标识，不可重复</td></tr>
+        <tr><td class="k">type</td><td><code>sticker</code> / <code>image</code> / <code>audio</code></td></tr>
+        <tr><td class="k">member</td><td><code>bella</code> / <code>diana</code> / <code>eileen</code> / <code>fiona</code> / <code>sinuo</code> / <code>group</code></td></tr>
+        <tr><td class="k">name</td><td>显示名称</td></tr>
+        <tr><td class="k">set</td><td>所属系列，用于「系列」筛选条</td></tr>
+        <tr><td class="k">file</td><td>相对站点的文件路径</td></tr>
+        <tr><td class="k">w / h / bytes</td><td>宽高与体积，用于详情展示与排序</td></tr>
+        <tr><td class="k">tags</td><td>标签数组，参与搜索</td></tr>
+        <tr><td class="k">source / sourceUrl</td><td>来源说明与外链，会显示在详情面板</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section">
+    <h3>目录结构</h3>
+    <div class="note mono" style="white-space:pre;overflow-x:auto;line-height:1.9">
+asoul-materials/
+├─ index.html          首页
+├─ gallery.html        素材库（筛选 / 搜索 / 灯箱）
+├─ audio.html          音乐索引 + 本地音频库
+├─ import.html         导入后台
+├─ about.html          本页
+├─ assets/
+│  ├─ css/site.css     视觉系统
+│  ├─ js/data.js       站点数据（生成物）
+│  ├─ js/core.js       核心逻辑
+│  ├─ js/gallery.js   素材库逻辑
+│  ├─ js/audio.js     音乐页逻辑
+│  ├─ js/import.js    导入后台逻辑
+│  ├─ images/          图片素材（122，含 86 张服设三视图）
+│  └─ stickers/        表情包素材（205）
+├─ data/
+│  ├─ members.json     成员资料
+│  ├─ assets.json      素材清单
+│  └─ music.json       曲目清单
+├─ start.sh / start.bat  本地启动脚本
+└─ README.md</div>
+  </div>
+</main>
+
+<footer class="footer">
+  <div>本页为粉丝自发整理的素材索引站，与 A-SOUL 制作委员会、乐华娱乐、枝江娱乐均无隶属关系。</div>
+  <div>所有素材版权归原作者与版权方所有，仅供个人学习、交流与二创参考，<b>请勿用于商业用途</b>。</div>
+  <div class="mt-8"><a href="index.html">返回首页</a> · <a href="gallery.html">素材库</a> · <a href="import.html">导入后台</a></div>
+</footer>
+
+<script src="assets/js/data.js?v=2"></script>
+<script src="assets/js/core.js?v=2"></script>
+<script>
+(async function () {
+  const S = window.ASOUL;
+  await S.boot('about.html');
+  document.getElementById('scopeTable').innerHTML = S.baseMembers
+    .filter(m => m.id !== 'group')
+    .map(m => '<tr>' +
+      '<td class="k" style="color:' + m.color + '">' + m.name + ' ' + m.en + '</td>' +
+      '<td>' + m.group + '</td>' +
+      '<td>' + m.status + '</td>' +
+      '<td><span class="chip" style="background:' + m.color + '33;border-color:' + m.color + '88">' + m.color + '</span></td>' +
+      '<td><a href="' + m.bili + '" target="_blank" rel="noopener">' + m.biliName + ' ↗</a></td>' +
+    '</tr>').join('');
+})();
+</script>
+</body>
+</html>

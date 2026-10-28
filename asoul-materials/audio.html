@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>音乐与音频 · A-SOUL 素材站</title>
+<link rel="stylesheet" href="assets/css/site.css">
+<script>try{if(localStorage.getItem('asoul.theme')==='light')document.documentElement.setAttribute('data-theme','light')}catch(e){}</script>
+</head>
+<body>
+
+<header class="nav" data-nav></header>
+
+<main class="wrap">
+  <div class="section-head" style="padding-top:34px">
+    <h2>音乐 / 音频</h2>
+    <p>现役成员相关的曲目索引；音频文件因版权原因不做分发，请通过官方渠道收听。</p>
+  </div>
+
+  <div class="note warn">
+    <b>关于音频文件：</b>本站只整理<b>曲目索引与官方收听入口</b>，不存储、不分发任何受版权保护的音源。
+    如果你想把自己收藏的音频集中管理，可以使用下方的「我的音频库」——文件只保存在你自己的浏览器里，不会上传到任何服务器。
+  </div>
+
+  <section class="section">
+    <div class="music-tabs" id="cats"></div>
+    <div class="search-box" style="margin-bottom:20px">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
+        <circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/>
+      </svg>
+      <input type="text" id="mq" placeholder="搜索曲名，如「帝江」「Shiny Dancer」">
+    </div>
+    <div class="music-list" id="songList"></div>
+    <div id="songEmpty"></div>
+  </section>
+
+  <section class="section">
+    <div class="section-head row-between">
+      <div>
+        <h2>我的音频库</h2>
+        <p>导入本地音频文件，在浏览器内直接播放。文件保存在本地 IndexedDB，同时会出现在素材库的「音频」分类。</p>
+      </div>
+      <div>
+        <input type="file" id="audioInput" accept="audio/*" multiple class="hidden">
+        <button class="btn primary" id="audioPick">＋ 导入音频文件</button>
+      </div>
+    </div>
+    <div class="music-list" id="myAudio"></div>
+    <div id="myAudioEmpty" class="note">
+      还没有导入任何音频。点击右上角按钮选择本地音频文件（mp3 / wav / flac / m4a …）即可。
+    </div>
+  </section>
+</main>
+
+<div class="player-bar" id="playerBar">
+  <span class="player-name" id="playerName">未在播放</span>
+  <audio id="player" controls></audio>
+  <button class="btn sm ghost" id="playerClose">收起</button>
+</div>
+
+<footer class="footer">
+  <div>曲目信息整理自公开资料，版权归 A-SOUL 制作委员会及各版权方所有。</div>
+  <div class="mt-8"><a href="about.html">来源与版权声明</a> · <a href="gallery.html?type=audio">素材库 · 音频分类</a></div>
+</footer>
+
+<script src="assets/js/data.js?v=2"></script>
+<script src="assets/js/core.js?v=2"></script>
+<script src="assets/js/audio.js"></script>
+</body>
+</html>

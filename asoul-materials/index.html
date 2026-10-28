@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A-SOUL 素材站 · 灵境少女二创资料库</title>
+<meta name="description" content="A-SOUL 素材收集站：表情包、立绘、壁纸与音乐索引。收录贝拉、嘉然、乃琳、心宜、思诺，不含已退团成员。">
+<link rel="stylesheet" href="assets/css/site.css">
+<script>try{if(localStorage.getItem('asoul.theme')==='light')document.documentElement.setAttribute('data-theme','light')}catch(e){}</script>
+</head>
+<body>
+
+<header class="nav" data-nav></header>
+
+<main>
+  <section class="hero wrap">
+    <span class="hero-badge"><i></i>资料库已更新 · 收录 5 位现役成员</span>
+    <h1>把 A-SOUL 的每一帧<br><span class="grad">都收进这座枝江小城</span></h1>
+    <p class="hero-lead">
+      这里是一个粉丝向的 <b>A-SOUL 素材归档站</b>，收集表情包、官方立绘、壁纸与音乐作品索引。
+      收录范围严格限定在<b>现役的 5 位成员</b>——贝拉、嘉然、乃琳、心宜、思诺，
+      已退团 / 休眠的成员素材<b>不做收录</b>。
+    </p>
+
+    <div class="hero-kpis" id="kpis"></div>
+
+    <div class="hero-actions">
+      <a class="btn primary" href="gallery.html">进入素材库 →</a>
+      <a class="btn" href="audio.html">音乐专区</a>
+      <a class="btn ghost" href="import.html">素材导入后台</a>
+    </div>
+  </section>
+
+  <section class="section wrap">
+    <div class="section-head">
+      <h2>现役成员</h2>
+      <p>点击成员卡片，直接筛选出该成员的全部素材。</p>
+    </div>
+    <div class="member-grid" id="memberGrid"></div>
+  </section>
+
+  <section class="section wrap">
+    <div class="section-head">
+      <h2>素材分类</h2>
+      <p>从三个入口进入不同类型的素材集合。</p>
+    </div>
+    <div class="entry-grid">
+      <a class="entry" href="gallery.html?type=sticker">
+        <span class="arrow">→</span>
+        <div class="entry-ico">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="9"/><path d="M8.5 14.5s1.3 1.8 3.5 1.8 3.5-1.8 3.5-1.8"/><path d="M9 9.5h.01M15 9.5h.01"/>
+          </svg>
+        </div>
+        <h3>表情包 / 装扮表情</h3>
+        <p>B 站个性装扮表情、官方动态表情、大航海舰长专属表情，以及阿草与联名企划表情。</p>
+      </a>
+      <a class="entry" href="gallery.html?type=image">
+        <span class="arrow">→</span>
+        <div class="entry-ico">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="4" width="18" height="16" rx="3"/><circle cx="8.5" cy="9.5" r="1.6"/><path d="M21 16.5l-4.7-4.7L6 22"/>
+          </svg>
+        </div>
+        <h3>图片素材</h3>
+        <p>官方公式立绘、常服 / 团服 / 生日服等一系列形象图，以及专辑封面与团体标识。</p>
+      </a>
+      <a class="entry" href="audio.html">
+        <span class="arrow">→</span>
+        <div class="entry-ico">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 18V6l11-2v12"/><circle cx="6.5" cy="18" r="2.6"/><circle cx="17.5" cy="16" r="2.6"/>
+          </svg>
+        </div>
+        <h3>音乐 / 音频</h3>
+        <p>团曲、个人曲、专辑曲完整索引，支持导入本地音频文件在线播放。</p>
+      </a>
+      <a class="entry" href="import.html">
+        <span class="arrow">→</span>
+        <div class="entry-ico">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 3v12"/><path d="M7.5 10.5L12 15l4.5-4.5"/><path d="M4 17v2.5A1.5 1.5 0 0 0 5.5 21h13a1.5 1.5 0 0 0 1.5-1.5V17"/>
+          </svg>
+        </div>
+        <h3>导入后台</h3>
+        <p>把你自己的收藏拖进来 —— 自动识别、批量打标、本地持久化，并可导出索引清单。</p>
+      </a>
+    </div>
+  </section>
+
+  <section class="section wrap">
+    <div class="section-head row-between">
+      <div>
+        <h2>精选预览</h2>
+        <p>从素材库随机抽取的一部分收录内容。</p>
+      </div>
+      <a class="btn sm" href="gallery.html">查看全部 →</a>
+    </div>
+    <div class="grid" id="previewGrid"></div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div>本页为粉丝自发整理的素材索引站，与 A-SOUL 制作委员会、乐华娱乐、枝江娱乐均无隶属关系。</div>
+  <div>所有素材版权归原作者与版权方所有，仅供个人学习、交流与二创参考，<b>请勿用于商业用途</b>。</div>
+  <div class="mt-8"><a href="about.html">来源与版权声明</a> · <a href="gallery.html">素材库</a> · <a href="import.html">导入后台</a></div>
+</footer>
+
+<script src="assets/js/data.js?v=2"></script>
+<script src="assets/js/core.js?v=2"></script>
+<script>
+(async function () {
+  const S = window.ASOUL;
+  await S.boot('index.html');
+
+  const st = S.stats();
+
+  /* KPI */
+  document.getElementById('kpis').innerHTML = [
+    ['总素材', st.total],
+    ['表情包', st.sticker],
+    ['图片', st.image],
+    ['曲目索引', st.music],
+    ['现役成员', 5]
+  ].map(k => '<div class="kpi"><div class="n">' + k[1] + '</div><div class="l">' + k[0] + '</div></div>').join('');
+
+  /* 成员卡 */
+  const members = S.baseMembers.filter(m => m.id !== 'group');
+  document.getElementById('memberGrid').innerHTML = members.map(m => {
+    const n = st.byMember[m.id] || 0;
+    const extraChips = [
+      m.ageNote ? '<span class="chip">' + m.ageNote + '</span>' : '',
+      m.weight ? '<span class="chip">' + m.weight + (m.blood ? ' · ' + m.blood + ' 型血' : '') + '</span>' : '',
+      (m.aliases && m.aliases.length) ? '<span class="chip">别称 ' + m.aliases.map(S.esc).join(' / ') + '</span>' : ''
+    ].join('');
+    const tagRow = (m.tags && m.tags.length)
+      ? '<div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:10px">' +
+        m.tags.map(t => '<span class="chip">' + S.esc(t) + '</span>').join('') + '</div>'
+      : '';
+    const outfitLine = (m.outfits && m.outfits.length)
+      ? '<div style="margin-top:10px;font-size:12px;line-height:1.8;color:var(--fg-dim)">' +
+        '<b style="color:var(--fg-mute);font-weight:600">服饰体系：</b>' + m.outfits.map(S.esc).join(' · ') + '</div>'
+      : '';
+    const quoteRows = (m.quotes && m.quotes.length ? m.quotes : [m.slogan])
+      .map(q => '<div class="mc-quote">「' + S.esc(q) + '」</div>').join('');
+    return '<div class="member-card" style="--mc:' + m.color + '" data-goto="' + m.id + '">' +
+      '<div class="mc-top"><div><div class="mc-name">' + m.name + '</div>' +
+        '<div class="mc-en">' + m.en + '</div></div>' +
+        '<div class="chip hl">' + m.group + '</div></div>' +
+      '<div class="mc-role">' + S.esc(m.role) + '</div>' +
+      '<div class="mc-desc">' + S.esc(m.desc) + '</div>' +
+      '<div class="mc-meta">' +
+        '<span class="chip">生日 ' + m.birthday + '</span>' +
+        '<span class="chip">粉丝名 ' + m.fans + '</span>' +
+        extraChips +
+      '</div>' +
+      tagRow +
+      outfitLine +
+      quoteRows +
+      '<div class="mc-foot"><span>收录素材</span><b>' + n + ' 项</b></div>' +
+    '</div>';
+  }).join('');
+
+  document.getElementById('memberGrid').addEventListener('click', e => {
+    const c = e.target.closest('[data-goto]');
+    if (c) location.href = 'gallery.html?member=' + c.getAttribute('data-goto');
+  });
+
+  /* 精选预览：均匀抽样，优先图片与标识 */
+  const pool = S.assets.slice();
+  pool.sort(() => Math.random() - 0.5);
+  const feats = pool.filter(a => a.type === 'image').slice(0, 6)
+    .concat(pool.filter(a => a.type === 'sticker').slice(0, 12));
+  const grid = document.getElementById('previewGrid');
+  S.renderBatched(grid, feats, a => {
+    const t = document.createElement('template');
+    t.innerHTML = S.cardHTML(a).trim();
+    return t.content.firstChild;
+  }, 24);
+  S.eagerLoad(grid);
+  S.bindCardEvents(() => feats);
+  S.hydrateUserCards(grid);
+})();
+</script>
+</body>
+</html>

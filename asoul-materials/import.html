@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>导入后台 · A-SOUL 素材站</title>
+<link rel="stylesheet" href="assets/css/site.css">
+<script>try{if(localStorage.getItem('asoul.theme')==='light')document.documentElement.setAttribute('data-theme','light')}catch(e){}</script>
+<style>
+  .imp-grid { display:grid; grid-template-columns: 1fr; gap:16px; }
+  .stat-row { display:flex; flex-wrap:wrap; gap:26px; }
+  .stat-row .kpi .n { font-size:24px; }
+</style>
+</head>
+<body>
+
+<header class="nav" data-nav></header>
+
+<main class="wrap">
+  <div class="section-head" style="padding-top:34px">
+    <h2>素材导入后台</h2>
+    <p>把本地文件拖进来，自动识别成员与分类，生成可用的素材索引。</p>
+  </div>
+
+  <div class="steps">
+    <div class="step">
+      <div class="no">STEP 01</div>
+      <h4>拖入文件</h4>
+      <p>支持图片（png / jpg / gif / webp）与音频（mp3 / wav / flac / m4a）。可一次拖入多个。</p>
+    </div>
+    <div class="step">
+      <div class="no">STEP 02</div>
+      <h4>核对信息</h4>
+      <p>已按文件名自动猜测成员并读取尺寸，可在表格里逐条修改，或批量设置。</p>
+    </div>
+    <div class="step">
+      <div class="no">STEP 03</div>
+      <h4>存入本地库</h4>
+      <p>写入浏览器 IndexedDB，刷新页面后仍在，并且会立刻出现在素材库里。</p>
+    </div>
+    <div class="step">
+      <div class="no">STEP 04</div>
+      <h4>导出索引</h4>
+      <p>导出 JSON 或 data.js，覆盖到站点目录后即可分发给其他人。</p>
+    </div>
+  </div>
+
+  <div id="dbWarn"></div>
+
+  <div class="drop" id="drop">
+    <div class="ico">
+      <svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin:0 auto;opacity:.75">
+        <path d="M12 3v12"/><path d="M7.5 10.5L12 15l4.5-4.5"/><path d="M4 17v2.5A1.5 1.5 0 0 0 5.5 21h13a1.5 1.5 0 0 0 1.5-1.5V17"/>
+      </svg>
+    </div>
+    <h3>把素材文件拖到这里</h3>
+    <p>或者点击此处选择文件 · 也可以直接粘贴剪贴板中的图片（Ctrl / ⌘ + V）</p>
+    <input type="file" id="fileInput" multiple accept="image/*,audio/*" class="hidden">
+  </div>
+
+  <div id="stage" class="hidden mt-28">
+    <div class="batch">
+      <span class="lbl">批量操作</span>
+      <select class="picker sm" id="bMember"><option value="">设置成员为…</option></select>
+      <select class="picker sm" id="bType">
+        <option value="">设置类型为…</option>
+        <option value="sticker">表情包</option>
+        <option value="image">图片</option>
+        <option value="audio">音频</option>
+      </select>
+      <input type="text" id="bTag" placeholder="追加标签…" class="mono"
+             style="padding:9px 12px;border-radius:10px;background:var(--panel);border:1px solid var(--line);outline:none;font-size:12.5px">
+      <button class="btn sm" id="bApplyTag">加标签</button>
+      <div style="flex:1"></div>
+      <button class="btn sm ghost" id="selAll">全选</button>
+      <button class="btn sm ghost" id="selNone">取消选择</button>
+      <button class="btn sm ghost" id="bDel">删除所选</button>
+    </div>
+
+    <div class="scroll-x">
+      <table class="imp-table">
+        <thead>
+          <tr>
+            <th style="width:36px"><input type="checkbox" id="chkAll"></th>
+            <th style="width:52px">预览</th>
+            <th style="width:210px">显示名称</th>
+            <th style="width:170px">成员</th>
+            <th style="width:120px">类型</th>
+            <th style="width:150px">标签（逗号分隔）</th>
+            <th style="width:64px">体积</th>
+          </tr>
+        </thead>
+        <tbody id="rows"></tbody>
+      </table>
+    </div>
+
+    <div class="row-between mt-20">
+      <div class="text-dim" id="pendingNote">待保存 0 项</div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <button class="btn ghost" id="clearStaged">清空列表</button>
+        <button class="btn primary" id="saveAll">保存到本地素材库</button>
+      </div>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="section-head">
+      <h2>已导入的素材</h2>
+      <p>保存在当前浏览器中的自定义素材，不属于站点内置数据。</p>
+    </div>
+    <div class="stat-row" id="myStats"></div>
+    <div class="grid mt-20" id="myGrid"></div>
+    <div id="myEmpty" class="note">还没有保存任何自定义素材。</div>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <h2>导出与分发</h2>
+      <p>把索引导出成文件，覆盖到站点目录即可让改动跟着站点一起走。</p>
+    </div>
+
+    <div class="panel">
+      <h3>导出选项</h3>
+      <div style="display:flex;flex-wrap:wrap;gap:10px">
+        <button class="btn" id="expMine">导出我的素材索引（assets-mine.json）</button>
+        <button class="btn" id="expMerged">导出合并后索引（assets.json）</button>
+        <button class="btn" id="expJs">导出 data.js（内置数据 + 我的素材）</button>
+        <button class="btn ghost" id="expMembers">导出 members.json</button>
+      </div>
+      <div class="note mt-14">
+        <b>如何使用导出的文件：</b><br>
+        1. <span class="mono">assets-mine.json</span> —— 只含你自己导入的素材，便于备份与分享给你的朋友；<br>
+        2. <span class="mono">assets.json</span> / <span class="mono">data.js</span> —— 完整数据。<b>会自动剔除你在素材库删除的素材，并应用移动分类的改动</b>。
+        把 <span class="mono">data.js</span> 覆盖到
+        <span class="mono">assets/js/data.js?v=2</span>，即可把新增素材固化进站点，别人打开也能看到；<br>
+        3. 素材文件本身记得同步放进 <span class="mono">assets/images/</span> 或 <span class="mono">assets/stickers/</span> 对应目录，
+        并把 JSON 里的 <span class="mono">file</span> 字段改成相对路径。
+      </div>
+    </div>
+
+    <div class="panel">
+      <h3>已删除的内置素材</h3>
+      <p class="text-dim mb-0">在素材库大图预览里删除的内置素材会列在这里。删除只是先在本浏览器隐藏，导出 data.js 覆盖站点文件后才对所有人彻底生效；误删可随时恢复。</p>
+      <div class="mt-14" id="hiddenList"></div>
+      <div class="mt-14" style="display:flex;gap:10px;flex-wrap:wrap">
+        <button class="btn ghost" id="expHidden">导出隐藏清单</button>
+        <button class="btn ghost" id="clearHidden">全部恢复</button>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h3>导入已有索引</h3>
+      <p class="text-dim mb-0">选择一个此前导出的 <span class="mono">assets-mine.json</span>，或在素材库/导入后台备份的索引文件，恢复你的收藏。</p>
+      <div class="mt-14" style="display:flex;gap:10px;flex-wrap:wrap">
+        <input type="file" id="impJson" accept=".json,application/json" class="hidden">
+        <button class="btn" id="impJsonBtn">选择索引文件</button>
+        <button class="btn ghost" id="wipe">清空本地素材库</button>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div>导入的文件仅保存在你自己的浏览器中，不会上传到任何服务器。</div>
+  <div class="mt-8"><a href="about.html">来源与版权声明</a> · <a href="gallery.html">素材库</a></div>
+</footer>
+
+<script src="assets/js/data.js?v=2"></script>
+<script src="assets/js/core.js?v=2"></script>
+<script src="assets/js/import.js"></script>
+</body>
+</html>
